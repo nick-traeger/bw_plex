@@ -357,7 +357,7 @@ def get_valid_filename(s):
     head = os.path.dirname(s)
     tail = os.path.basename(s)
 
-    clean_tail = str(tail).strip()
+    clean_tail = tail.encode('utf-8').strip()
     clean_tail = re.sub(r'(?u)[^-_\w.() ]', '', clean_tail)
 
     if head:
