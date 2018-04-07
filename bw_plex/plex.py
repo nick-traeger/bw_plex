@@ -659,7 +659,9 @@ def client_jump_to(offset=None, sessionkey=None):
 
             # This does not work on plex web since the fucker returns
             # the local url..
+            LOG.debug('connecting to client')
             client = PMS.client(client.title).connect()
+            LOG.debug('calling seekTo')
             client.seekTo(int(offset * 1000))
             LOG.debug('Jumped %s %s to %s %s', user, client.title, offset, media._prettyfilename())
 
