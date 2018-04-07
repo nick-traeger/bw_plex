@@ -483,6 +483,10 @@ def search_for_theme_youtube(name, rk=1337, save_path=None, url=None):
     # Youtuble dl requires the template to be unicode.
     t = u'%s' % fp
 
+    def match_filter(info_dict):
+        if info_dict.get('duration') > 90:
+            return 'Duration too long.. skipping.'
+
     ydl_opts = {
         'quiet': True,
         'continuedl': True,
@@ -494,7 +498,7 @@ def search_for_theme_youtube(name, rk=1337, save_path=None, url=None):
         # youtube. Should it be a config option for ppl with data caps?
         # Possible format could be bestaudio for those poor fuckers..
         'format': 'best',
-        'match_filter': 'duration < 90',
+        'match_filter': match_filter,
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'wav',
