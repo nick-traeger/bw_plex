@@ -636,11 +636,10 @@ def client_jump_to(offset=None, sessionkey=None):
         # Find the client.. This client does not have the correct address
         # or 'protocolCapabilities' so we have to get the correct one.
         # or we can proxy thru the server..
-        LOG.debug('jump-debug %s %s', sessionkey, media.sessionKey)
         if sessionkey and int(sessionkey) == media.sessionKey:
             client = media.players[0]
             user = media.usernames[0]
-            LOG.debug('client %s %s', client.title, (media.viewOffset / 1000))
+            LOG.debug('client %s %s %s', client.title, user, (media.viewOffset / 1000))
 
             # Check that this client is allowed.
             if conf_clients and client.title not in conf_clients:
