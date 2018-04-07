@@ -643,10 +643,12 @@ def client_jump_to(offset=None, sessionkey=None):
 
             # Check that this client is allowed.
             if conf_clients and client.title not in conf_clients:
+                LOG.debug('client %s is not allowed', client.title)
                 return
 
             # Check that this user is allowed.
             if conf_users and user not in conf_users:
+                LOG.debug('user %s is not allowed', user)
                 return
 
             # To stop processing. from func task if we have used to much time..
