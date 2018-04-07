@@ -361,7 +361,7 @@ def get_valid_filename(s):
     clean_tail = re.sub(r'(?u)[^-_\w.() ]', '', clean_tail)
 
     if head:
-        return os.path.join(head, u'%s' % clean_tail)
+        return os.path.join(head.encode('utf-8'), u'%s' % clean_tail)
     else:
         return clean_tail
 
