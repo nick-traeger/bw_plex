@@ -494,6 +494,7 @@ def search_for_theme_youtube(name, rk=1337, save_path=None, url=None):
         # youtube. Should it be a config option for ppl with data caps?
         # Possible format could be bestaudio for those poor fuckers..
         'format': 'best',
+        'match_filter': 'duration < 90',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'wav',
@@ -520,7 +521,7 @@ def search_for_theme_youtube(name, rk=1337, save_path=None, url=None):
             if url:
                 ydl.download([url])
             else:
-                ydl.download([name + ' theme song'])
+                ydl.download([name + ' intro'])
             return t + '.wav'
 
         except:
